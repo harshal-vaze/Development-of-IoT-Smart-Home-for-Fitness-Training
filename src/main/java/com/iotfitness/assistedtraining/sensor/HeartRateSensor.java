@@ -17,75 +17,75 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HeartRateSensor {
-	
+
 	public HeartRateSensor() {
-		
+
 		CoapServer server = new CoapServer(5689);
-		
-		server.add(new GetHeartRate());       
 
-        server.start(); 
+		server.add(new GetHeartRate());
 
-}
+		server.start();
+
+	}
 
 	public static class GetHeartRate extends CoapResource {
-        public GetHeartRate() {
-        	
-            super("getHeartRate");
-            
-            getAttributes().setTitle("Get Heart Rate");
-        }
-        
-        @Override
-        public void handleGET(CoapExchange exchange) {
-            
-        	StringBuilder HeartRate = new StringBuilder();
-        	BufferedWriter bw = null;        	
-        	BufferedReader br = null;
-        	
-        	if(!(new File("HeartRate.txt")).exists())
-        	{
-        		try {
-    	        	bw = new BufferedWriter(new FileWriter(new File("HeartRate.txt")));
-    	            bw.write("100");
-    	        }
+		public GetHeartRate() {
 
-    	        catch (IOException e) {
-    	            System.err.format("IOException: %s%n", e);
-    	        }
-    	        
-    	        finally {
-    	        	try {
-    					bw.close();
-    				} catch (IOException e) {
-    					e.printStackTrace();
-    				}
-    	        }        		
-        	}
+			super("getHeartRate");
 
-            try {            	
-            	br = Files.newBufferedReader(Paths.get("HeartRate.txt").toAbsolutePath());
+			getAttributes().setTitle("Get Heart Rate");
+		}
 
-                String line;
-                while ((line = br.readLine()) != null) {
-                	HeartRate.append(line);
-                }
-            } 
-            
-            catch (IOException e) {
-                System.err.format("IOException: %s%n", e);
-            }
-            
-            finally {
-            	try {
-    				br.close();
-    			} catch (IOException e) {
-    				e.printStackTrace();
-    			}
-            }
-        	
-            exchange.respond(ResponseCode.CONTENT, "{\"HeartRate\":" + HeartRate + "}", MediaTypeRegistry.APPLICATION_JSON);           
-      
-        }        
+		@Override
+		public void handleGET(CoapExchange exchange) {
+
+			StringBuilder HeartRate = new StringBuilder();
+			BufferedWriter bw = null;
+			BufferedReader br = null;
+
+			if (!(new File("HeartRate.txt")).exists()) {
+				try {
+					bw = new BufferedWriter(new FileWriter(new File("HeartRate.txt")));
+					bw.write("100");
+				}
+
+				catch (IOException e) {
+					System.err.format("IOException: %s%n", e);
+				}
+
+				finally {
+					try {
+						bw.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			try {
+				br = Files.newBufferedReader(Paths.get("HeartRate.txt").toAbsolutePath());
+
+				String line;
+				while ((line = br.readLine()) != null) {
+					HeartRate.append(line);
+				}
+			}
+
+			catch (IOException e) {
+				System.err.format("IOException: %s%n", e);
+			}
+
+			finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			exchange.respond(ResponseCode.CONTENT, "{\"HeartRate\":" + HeartRate + "}",
+					MediaTypeRegistry.APPLICATION_JSON);
+
+		}
 	}
 }

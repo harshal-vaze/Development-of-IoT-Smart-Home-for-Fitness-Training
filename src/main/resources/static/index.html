@@ -2,172 +2,327 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<script src="jquery-3.4.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <title>Test</title>
 </head>
-<body onload="viewCounts();viewCounts2()">
-	<div class="view" style="background-image: url(./Image/ABC.jpg) ; height: 720px; width: 1518px;  background-size: cover;">
-		<div class="container">
-  			<div class="row" style="height:90px">
-    			<div class="col">
-    				<div class="shadow-lg p-3 mb-5 bg-none rounded" style="height:80px">
-   			   			<h2> <p class="p text-center"> ASSISTED TRAINING 
-   				  	 	<small class="text-dark font-weight-normal"><em> USING SMART-HOME APPLIANCES </em></small> </p>
-   			   			</h2>
-    				</div>
-    			</div>
-			</div>		
-		<div class="row" style= "height:135px">
-			<div class="col-1">
-			</div>
-			<div class ="col">
-				<div class="shadow-lg p-3 mb-5 bg-none rounded" style="height:125px; width:400px">   			
-      				<h3 class="p text-muted text-center font-weight-normal"> CALORIES BURNT </h3> 
-      					<div class="row">
-      						<div class="col">
-      						</div>
-      						<div class="col">     			  				
-	      					<h4 class="p-2 text-success text-center border border-dark rounded" id="p2"> </h4>
-	      					</div>
-	      					<div class="col align-self-center">
-	      					cal
-	      					</div>
-	      				</div>	   		
-	      		</div>
-			</div>  
-			<div class="col">			  			
-    			<div class="shadow-lg p-3 mb-5 bg-none rounded" style="height:125px; width:400px">   			
-      				<h3 class="p text-muted text-center font-weight-normal"> HEART RATE </h3> 
-      					<div class="row">
-      						<div class="col">
-      						</div>
-      						<div class="col">     			  				
-	      					<h4 class="p-2 text-danger text-center border border-dark rounded" id="p4"> </h4>
-	      					</div>
-	      					<div class="col align-self-center">
-	      					BPM
-	      					</div>
-	      				</div>	   		
-	      		</div>
-	     	</div> 
-	     </div>
-		 <div class="row" style="height:80px">
-			<div class="col">
-				<div class="shadow-lg p-3 mb-5 bg-none rounded" style="height:475px">
-					<h3> <u> <p class="p text-muted text-center font-weight-normal" style="height:20px"> BENCH PRESS </p> </u> </h3>
-					<h4 class="p text-info text-center"> REP COUNT </h4>
-      					<div class="row" style="height:40px">
-      						<div class="col-5">
-      						<button id="b1" class="btn btn-outline-dark btn-lg" type="button" onclick="startRep()">Start</button>     				
-      						</div>
-      						<div class="col"> 						
-							<h5 class="p text-center text-white bg-secondary border border-dark rounded" id="p1"> </h5>	
-							</div>
-	      					<div class="col-5">
-	      					<button id="b2" class="btn btn-outline-dark btn-lg float-right" type="button" onclick="stopRep()">Stop</button>
-	      					</div>
-	      				</div>
-      				<img id="im1" src="./Image/Rep2.png" class="rounded mx-auto d-block" style="width:428px">			
+<body onload="viewRepCounts();viewCyclingCounts()">
+	<div class="view"
+		style="background-image: url(./Image/room.jpg); height: 720px; width: 1518px; background-size: cover;">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row" style="height: 90px">
+					<div class="col-lg" style="height: 90px">
+						<div class="shadow-lg p-3 mb-5 bg-none rounded text-center"
+							style="height: 80px">
+							<h2>
+								ASSISTED TRAINING <small class="text-dark font-weight-normal"><em>
+										USING SMART-HOME APPLIANCES </em></small>
+							</h2>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col">
-				<div class="shadow-lg p-3 mb-5 bg-none rounded" style="height:475px">
-					<h3> <u> <p class="p text-muted text-center font-weight-normal"style="height:20px" > CYCLING </p> </u> </h3>
-					<h4 class="p text-info text-center"> CYCLING SPEED </h4>
-      					<div class="row" style="height:40px">
-      						<div class="col-5">
-      						<button id="b3" class="btn btn-outline-dark btn-lg" type="button" onclick="startCyc()">Start</button>					
-      						</div>
-      						<div class="col"> 						
-							<h5 class="p text-center text-white bg-secondary border border-dark rounded" id="p3"> </h5> 
+			<div class="container">
+				<div class="row h-100" style="height: 135px">
+					<div class="col-lg" style="height: 135px">
+						<div class="shadow-lg p-3 mb-5 bg-none rounded"
+							style="height: 125px; width: 400px">
+							<h3 class="p text-muted text-center font-weight-normal">
+								CALORIES BURNT</h3>
+							<div class="row">
+								<div class="col-lg"></div>
+								<div class="col-lg">
+									<h4
+										class="p-2 text-success text-center border border-dark rounded"
+										id="p2"></h4>
+								</div>
+								<div class="col-lg align-self-center">kcal</div>
 							</div>
-	      					<div class="col-5">
-	      					km/hr
-	      					<button id="b4" class="btn btn-outline-dark btn-lg float-right" type="button" onclick="stopCyc()">Stop</button>				
-	      					</div>
-	      				</div>					
-					<img id="im2" src="./Image/Cycle2.png" class="rounded mx-auto d-block" style="width:460px">
+						</div>
+					</div>
+					<div class="col-lg text-center" style="height: 135px">
+						<button id="b5" class="btn btn-outline-dark btn-lg" type="button"
+							onclick="nextExercise()">Next Exercise</button>
+					</div>
+					<div class="col-lg" style="height: 135px">
+						<div class="shadow-lg p-3 mb-5 bg-none rounded"
+							style="height: 125px; width: 400px">
+							<h3 class="p text-muted text-center font-weight-normal">
+								HEART RATE</h3>
+							<div class="row">
+								<div class="col-lg align-self-center">
+									<img id="im3" src="./Image/heart.png"
+										class="rounded mx-auto d-block" style="height: 30px">
+								</div>
+								<div class="col-lg">
+									<h4
+										class="p-2 text-danger text-center border border-dark rounded"
+										id="p4"></h4>
+								</div>
+								<div class="col-lg align-self-center">BPM</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>	
-	</div>
-</div>
+			<div class="container">
+				<div class="row" style="height: 500px">
+					<div class="col-lg">
+						<div class="shadow-lg p-3 mb-5 bg-none rounded"
+							style="height: 475px">
+							<h3>
+								<u>
+									<p class="p text-muted text-center font-weight-normal"
+										style="height: 20px">BENCH PRESS</p>
+								</u>
+							</h3>
+							<h4 class="p text-info text-center">REPETITIONS COUNT</h4>
+							<div class="row" style="height: 40px">
+								<div class="col-5">
+									<button id="b1" class="btn btn-outline-dark btn-lg"
+										type="button" onclick="startRep()">Start</button>
+								</div>
+								<div class="col">
+									<h5
+										class="p text-center text-white bg-secondary border border-dark rounded"
+										id="p1"></h5>
+								</div>
+								<div class="col-5">
+									<button id="b2" class="btn btn-outline-dark btn-lg float-right"
+										type="button" onclick="stopRep()">Stop</button>
+								</div>
+							</div>
+							<img id="im1" src="./Image/Rep2.png"
+								class="rounded mx-auto d-block" style="width: 428px">
+						</div>
+					</div>
+					<div class="col-lg">
+						<div class="shadow-lg p-3 mb-5 bg-none rounded"
+							style="height: 475px">
+							<h3>
+								<u>
+									<p class="p text-muted text-center font-weight-normal"
+										style="height: 20px">CYCLING</p>
+								</u>
+							</h3>
+							<h4 class="p text-info text-center">CYCLING SPEED</h4>
+							<div class="row" style="height: 40px">
+								<div class="col-5">
+									<button id="b3" class="btn btn-outline-dark btn-lg"
+										type="button" onclick="startCyc()">Start</button>
+								</div>
+								<div class="col">
+									<h5
+										class="p text-center text-white bg-secondary border border-dark rounded"
+										id="p3"></h5>
+								</div>
+								<div class="col-5">
+									km/hr
+									<button id="b4" class="btn btn-outline-dark btn-lg float-right"
+										type="button" onclick="stopCyc()">Stop</button>
+								</div>
+							</div>
+							<img id="im2" src="./Image/Cycle2.png"
+								class="rounded mx-auto d-block" style="width: 460px">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<div class="page-footer text-center">
+			<p>Frankfurt University of Applied Sciences</p>
+		</div>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
 </body>
 
 <script src="jquery-3.4.1.min.js"></script>
 <script>
-function viewCounts() {
-		$(document).ready(function () {
-	        $.ajax({
-	            type: "GET",
-	            url: "http://localhost:8080/getCounts",
-	            contentType: "application/xml",
-	            dataType: "xml",
-	            success: function (xmlData) {                   
-	                console.log(xmlData);                  
-	                $("#p1").text($(xmlData).find("RepCount").text());
-	                $("#p2").text($(xmlData).find("CaloriesCount").text());
-	                $("#p4").text($(xmlData).find("HeartRate").text());
-	                
-	            },
-	            error: function (xhr) {
-	                alert(xhr.responseText);
-	            }
-	        });
-	    });
+	function viewRepCounts() {
+		$(document).ready(function() {
+			$.ajax({
+				type : "GET",
+				url : "http://localhost:8080/getRepCounts",
+				contentType : "application/xml",
+				dataType : "xml",
+				success : function(xmlData) {
+					console.log(xmlData);
+					$("#p1").text($(xmlData).find("RepCount").text());
+					$("#p2").text($(xmlData).find("CaloriesCount").text());
+					$("#p4").text($(xmlData).find("HeartRate").text());
+
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		});
 	}
-	
-function startRep() {
-	$("#im1").attr("src","./Image/Rep1.gif");
-	$(document).ready(function () {
-		interval = setInterval(viewCounts,1800);
-	});        
-}
 
-function stopRep() {
-	$("#im1").attr("src","./Image/Rep2.png");
-	$(document).ready(function () {
-		clearInterval(interval);
-	});        
-}
+	function setRepCount() {
+		var addData = "<RepCount>1</RepCount>";
+		$(document).ready(function() {
+			$.ajax({
+				type : "POST",
+				url : "http://localhost:8080/setRepCount",
+				contentType : "application/xml",
+				dataType : "xml",
+				data : addData,
+				success : function() {
+					console.log("Success");
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		});
+	}
 
-function viewCounts2() {
-	$(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/getCounts2",
-            contentType: "application/xml",
-            dataType: "xml",
-            success: function (xmlData) {                   
-                console.log(xmlData);                  
-                $("#p3").text($(xmlData).find("SpeedCount").text());
-                $("#p2").text($(xmlData).find("CaloriesCount2").text());
-                $("#p4").text($(xmlData).find("HeartRate2").text());
-            },
-            error: function (xhr) {
-                alert(xhr.responseText);
-            }
-        });
-    });
-}
+	function startRep() {
+		$("#im1").attr("src", "./Image/Rep1.gif");
+		$("#im3").attr("src", "./Image/heart.gif");
+		$(document).ready(function() {
+			interval = setInterval(viewRepCounts, 1800);
+			setRepCount();
+			interval3 = setInterval(setRepCount, 1800);
+		});
+	}
 
-function startCyc() {
-$("#im2").attr("src","./Image/Cycle1.gif");
-$(document).ready(function () {
-	interval2 = setInterval(viewCounts2,1000);
-});        
-}
+	function stopRep() {
+		$("#im1").attr("src", "./Image/Rep2.png");
+		$("#im3").attr("src", "./Image/heart.png");
+		$(document).ready(function() {
+			clearInterval(interval);
+			var addData = "<RepCount>0</RepCount>";
+			$(document).ready(function() {
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8080/setRepCount",
+					contentType : "application/xml",
+					dataType : "xml",
+					data : addData,
+					success : function() {
+						console.log("Success");
+					},
+					error : function(xhr) {
+						alert(xhr.responseText);
+					}
+				});
+			});
+			clearInterval(interval3);
+		});
+	}
 
-function stopCyc() {
-$("#im2").attr("src","./Image/Cycle2.png");
-$(document).ready(function () {
-	clearInterval(interval2);
-});        
-}
+	function viewCyclingCounts() {
+		$(document).ready(function() {
+			$.ajax({
+				type : "GET",
+				url : "http://localhost:8080/getCyclingCounts",
+				contentType : "application/xml",
+				dataType : "xml",
+				success : function(xmlData) {
+					console.log(xmlData);
+					$("#p3").text($(xmlData).find("SpeedCount").text());
+					$("#p2").text($(xmlData).find("CaloriesCount2").text());
+					$("#p4").text($(xmlData).find("HeartRate2").text());
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		});
+	}
 
+	function setSpeedCount() {
+		var addData = "<SpeedCount>1</SpeedCount>";
+		$(document).ready(function() {
+			$.ajax({
+				type : "POST",
+				url : "http://localhost:8080/setSpeedCount",
+				contentType : "application/xml",
+				dataType : "xml",
+				data : addData,
+				success : function() {
+					console.log("Success");
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		});
+	}
+
+	function startCyc() {
+		$("#im2").attr("src", "./Image/Cycle1.gif");
+		$("#im3").attr("src", "./Image/heart.gif");
+		$(document).ready(function() {
+			interval2 = setInterval(viewCyclingCounts, 1000);
+			setSpeedCount();
+			interval4 = setInterval(setSpeedCount, 1000);
+		});
+	}
+
+	function stopCyc() {
+		$("#im2").attr("src", "./Image/Cycle2.png");
+		$("#im3").attr("src", "./Image/heart.png");
+		$(document).ready(function() {
+			clearInterval(interval2);
+			var addData = "<SpeedCount>0</SpeedCount>";
+			$(document).ready(function() {
+				$.ajax({
+					type : "POST",
+					url : "http://localhost:8080/setSpeedCount",
+					contentType : "application/xml",
+					dataType : "xml",
+					data : addData,
+					success : function() {
+						console.log("Success");
+					},
+					error : function(xhr) {
+						alert(xhr.responseText);
+					}
+				});
+			});
+			clearInterval(interval4);
+		});
+	}
+
+	function nextExercise() {
+		var addData = "<ClearAll>1</ClearAll>";
+		$(document).ready(function() {
+			$.ajax({
+				type : "POST",
+				url : "http://localhost:8080/setAllClear",
+				contentType : "application/xml",
+				dataType : "xml",
+				data : addData,
+				success : function() {
+					console.log("Success");
+					location.reload();
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		});
+	}
 </script>
 </html>

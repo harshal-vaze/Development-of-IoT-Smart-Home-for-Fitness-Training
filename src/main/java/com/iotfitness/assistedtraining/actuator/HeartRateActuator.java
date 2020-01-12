@@ -15,52 +15,52 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HeartRateActuator {
-		
-	public HeartRateActuator() {
-		
-		CoapServer server = new CoapServer(5690);
-		
-		server.add(new SetHeartRate());       
 
-        server.start();
+	public HeartRateActuator() {
+
+		CoapServer server = new CoapServer(5690);
+
+		server.add(new SetHeartRate());
+
+		server.start();
 
 	}
-	
+
 	public static class SetHeartRate extends CoapResource {
 		public SetHeartRate() {
-    	
-			super("setHeartRate");
-        
-			getAttributes().setTitle("Set Heart Rate");
-    }
 
-        @Override
-        public void handlePOST(CoapExchange exchange) {	
-        			
-			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"POST_REQUEST_SUCCESS\"}", MediaTypeRegistry.APPLICATION_JSON);
-			
+			super("setHeartRate");
+
+			getAttributes().setTitle("Set Heart Rate");
+		}
+
+		@Override
+		public void handlePOST(CoapExchange exchange) {
+
+			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"POST_REQUEST_SUCCESS\"}",
+					MediaTypeRegistry.APPLICATION_JSON);
+
 			JSONObject json = new JSONObject(exchange.getRequestText());
 			String data = json.get("HeartRate").toString();
-			
+
 			BufferedWriter bw = null;
-	        
-	        try {
-	        	bw = new BufferedWriter(new FileWriter(new File("HeartRate.txt")));
-	            bw.write(data);
-	        } 
-	        
-	        catch (IOException e) {
-	            System.err.format("IOException: %s%n", e);
-	        } 
-	        
-	        finally {
-	        	try {
+
+			try {
+				bw = new BufferedWriter(new FileWriter(new File("HeartRate.txt")));
+				bw.write(data);
+			}
+
+			catch (IOException e) {
+				System.err.format("IOException: %s%n", e);
+			}
+
+			finally {
+				try {
 					bw.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-	        }
+			}
 		}
-    }		
+	}
 }
-

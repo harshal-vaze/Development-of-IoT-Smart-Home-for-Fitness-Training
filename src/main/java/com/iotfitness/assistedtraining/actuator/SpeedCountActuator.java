@@ -14,24 +14,24 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CaloriesActuator2 {
+public class SpeedCountActuator {
 
-	public CaloriesActuator2() {
+	public SpeedCountActuator() {
 
-		CoapServer server = new CoapServer(5688);
+		CoapServer server = new CoapServer(5694);
 
-		server.add(new SetCaloriesCount2());
+		server.add(new SetSpeedCount());
 
 		server.start();
 
 	}
 
-	public static class SetCaloriesCount2 extends CoapResource {
-		public SetCaloriesCount2() {
+	public static class SetSpeedCount extends CoapResource {
+		public SetSpeedCount() {
 
-			super("setCaloriesCount2");
+			super("setSpeedCount");
 
-			getAttributes().setTitle("Set Cycling Calories Count");
+			getAttributes().setTitle("Set Speed Count");
 		}
 
 		@Override
@@ -41,12 +41,12 @@ public class CaloriesActuator2 {
 					MediaTypeRegistry.APPLICATION_JSON);
 
 			JSONObject json = new JSONObject(exchange.getRequestText());
-			String data = json.get("CaloriesCount2").toString();
+			String data = json.get("SpeedCount").toString();
 
 			BufferedWriter bw = null;
 
 			try {
-				bw = new BufferedWriter(new FileWriter(new File("Calories.txt")));
+				bw = new BufferedWriter(new FileWriter(new File("SpeedCount.txt")));
 				bw.write(data);
 			}
 

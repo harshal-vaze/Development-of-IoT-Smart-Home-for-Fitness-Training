@@ -19,73 +19,73 @@ import org.springframework.stereotype.Component;
 public class CaloriesCountSensor {
 
 	public CaloriesCountSensor() {
-		
-		CoapServer server = new CoapServer(5684);
-		
-		server.add(new GetCaloriesCount());       
 
-        server.start();  
-        
+		CoapServer server = new CoapServer(5684);
+
+		server.add(new GetCaloriesCount());
+
+		server.start();
+
 	}
 
 	public static class GetCaloriesCount extends CoapResource {
-        public GetCaloriesCount() {
-        	
-            super("getCaloriesCount");
-            
-            getAttributes().setTitle("Get Calories Count");
-        }
-      
-        @Override
-        public void handleGET(CoapExchange exchange) {
-            
-        	StringBuilder Calories = new StringBuilder();
-        	BufferedWriter bw = null;        	
-        	BufferedReader br = null;
-        	
-        	if(!(new File("Calories.txt")).exists())
-        	{
-        		try {
-    	        	bw = new BufferedWriter(new FileWriter(new File("Calories.txt")));
-    	            bw.write("0");
-    	        }
+		public GetCaloriesCount() {
 
-    	        catch (IOException e) {
-    	            System.err.format("IOException: %s%n", e);
-    	        }
-    	        
-    	        finally {
-    	        	try {
-    					bw.close();
-    				} catch (IOException e) {
-    					e.printStackTrace();
-    				}
-    	        }        		
-        	}
+			super("getCaloriesCount");
 
-            try {            	
-            	br = Files.newBufferedReader(Paths.get("Calories.txt").toAbsolutePath());
+			getAttributes().setTitle("Get Calories Count");
+		}
 
-                String line;
-                while ((line = br.readLine()) != null) {
-                    Calories.append(line);
-                }
-            } 
-            
-            catch (IOException e) {
-                System.err.format("IOException: %s%n", e);
-            }
-            
-            finally {
-            	try {
-    				br.close();
-    			} catch (IOException e) {
-    				e.printStackTrace();
-    			}
-            }
-        	
-            exchange.respond(ResponseCode.CONTENT, "{\"CaloriesCount\":" + Calories + "}", MediaTypeRegistry.APPLICATION_JSON);           
-      
-        }        
+		@Override
+		public void handleGET(CoapExchange exchange) {
+
+			StringBuilder Calories = new StringBuilder();
+			BufferedWriter bw = null;
+			BufferedReader br = null;
+
+			if (!(new File("Calories.txt")).exists()) {
+				try {
+					bw = new BufferedWriter(new FileWriter(new File("Calories.txt")));
+					bw.write("0");
+				}
+
+				catch (IOException e) {
+					System.err.format("IOException: %s%n", e);
+				}
+
+				finally {
+					try {
+						bw.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			try {
+				br = Files.newBufferedReader(Paths.get("Calories.txt").toAbsolutePath());
+
+				String line;
+				while ((line = br.readLine()) != null) {
+					Calories.append(line);
+				}
+			}
+
+			catch (IOException e) {
+				System.err.format("IOException: %s%n", e);
+			}
+
+			finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			exchange.respond(ResponseCode.CONTENT, "{\"CaloriesCount\":" + Calories + "}",
+					MediaTypeRegistry.APPLICATION_JSON);
+
+		}
 	}
 }
