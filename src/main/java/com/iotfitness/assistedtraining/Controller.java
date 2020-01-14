@@ -19,7 +19,7 @@ public class Controller {
 		String xml = "";
 		JSONObject json = new JSONObject();
 
-		CoapClient client1 = new CoapClient("coap://localhost:5683/getRepCount");
+		CoapClient client1 = new CoapClient("coap://localhost:5685/getRepCount");
 		CoapResponse response1 = client1.get();
 
 		if (response1 != null) {
@@ -33,7 +33,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client2 = new CoapClient("coap://localhost:5684/getCaloriesCount");
+		CoapClient client2 = new CoapClient("coap://localhost:5686/getCaloriesCount");
 		CoapResponse response2 = client2.get();
 
 		if (response2 != null) {
@@ -48,7 +48,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client3 = new CoapClient("coap://localhost:5689/getHeartRate");
+		CoapClient client3 = new CoapClient("coap://localhost:5687/getHeartRate");
 		CoapResponse response3 = client3.get();
 
 		if (response3 != null) {
@@ -76,7 +76,7 @@ public class Controller {
 		String xml = "";
 		JSONObject json = new JSONObject();
 
-		CoapClient client1 = new CoapClient("coap://localhost:5686/getSpeedCount");
+		CoapClient client1 = new CoapClient("coap://localhost:5691/getSpeedCount");
 		CoapResponse response1 = client1.get();
 
 		if (response1 != null) {
@@ -90,7 +90,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client2 = new CoapClient("coap://localhost:5687/getCaloriesCount2");
+		CoapClient client2 = new CoapClient("coap://localhost:5692/getCaloriesCount2");
 		CoapResponse response2 = client2.get();
 
 		if (response2 != null) {
@@ -105,7 +105,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client3 = new CoapClient("coap://localhost:5691/getHeartRate2");
+		CoapClient client3 = new CoapClient("coap://localhost:5693/getHeartRate2");
 		CoapResponse response3 = client3.get();
 
 		if (response3 != null) {
@@ -131,7 +131,7 @@ public class Controller {
 
 		JSONObject json = new JSONObject();
 
-		CoapClient client1 = new CoapClient("coap://localhost:5683/getRepCount");
+		CoapClient client1 = new CoapClient("coap://localhost:5685/getRepCount");
 		CoapResponse response1 = client1.get();
 
 		if (response1 != null) {
@@ -145,7 +145,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client2 = new CoapClient("coap://localhost:5689/getHeartRate");
+		CoapClient client2 = new CoapClient("coap://localhost:5687/getHeartRate");
 		CoapResponse response2 = client2.get();
 
 		if (response2 != null) {
@@ -160,7 +160,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client3 = new CoapClient("coap://localhost:5684/getCaloriesCount");
+		CoapClient client3 = new CoapClient("coap://localhost:5686/getCaloriesCount");
 		CoapResponse response3 = client3.get();
 
 		if (response3 != null) {
@@ -211,7 +211,7 @@ public class Controller {
 		JSONObject postCaloriesData = new JSONObject();
 		postCaloriesData.put("CaloriesCount", newCaloriesCount);
 
-		CoapClient client5 = new CoapClient("coap://localhost:5685/setCaloriesCount");
+		CoapClient client5 = new CoapClient("coap://localhost:5689/setCaloriesCount");
 		CoapResponse response5 = client5.post(postCaloriesData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
 			System.out.println(response5.getCode());
@@ -223,7 +223,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client6 = new CoapClient("coap://localhost:5693/setRepCount");
+		CoapClient client6 = new CoapClient("coap://localhost:5688/setRepCount");
 
 		JSONObject jsonPost = new JSONObject();
 		JSONObject jsonXML = XML.toJSONObject(xml);
@@ -253,7 +253,7 @@ public class Controller {
 
 		JSONObject json = new JSONObject();
 
-		CoapClient client1 = new CoapClient("coap://localhost:5686/getSpeedCount");
+		CoapClient client1 = new CoapClient("coap://localhost:5691/getSpeedCount");
 		CoapResponse response1 = client1.get();
 
 		if (response1 != null) {
@@ -267,7 +267,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client2 = new CoapClient("coap://localhost:5687/getCaloriesCount2");
+		CoapClient client2 = new CoapClient("coap://localhost:5692/getCaloriesCount2");
 		CoapResponse response2 = client2.get();
 
 		if (response2 != null) {
@@ -282,7 +282,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		CoapClient client3 = new CoapClient("coap://localhost:5691/getHeartRate2");
+		CoapClient client3 = new CoapClient("coap://localhost:5693/getHeartRate2");
 		CoapResponse response3 = client3.get();
 
 		if (response3 != null) {
@@ -311,7 +311,7 @@ public class Controller {
 		JSONObject postHeartData = new JSONObject();
 		postHeartData.put("HeartRate2", newHeartRate);
 
-		CoapClient client4 = new CoapClient("coap://localhost:5692/setHeartRate2");
+		CoapClient client4 = new CoapClient("coap://localhost:5696/setHeartRate2");
 		CoapResponse response4 = client4.post(postHeartData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response4 != null) {
 			System.out.println(response4.getCode());
@@ -336,7 +336,7 @@ public class Controller {
 		JSONObject postCaloriesData = new JSONObject();
 		postCaloriesData.put("CaloriesCount2", newCaloriesCount);
 
-		CoapClient client5 = new CoapClient("coap://localhost:5688/setCaloriesCount2");
+		CoapClient client5 = new CoapClient("coap://localhost:5695/setCaloriesCount2");
 		CoapResponse response5 = client5.post(postCaloriesData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
 			System.out.println(response5.getCode());
@@ -379,7 +379,7 @@ public class Controller {
 		JSONObject jsonPostRepCount = new JSONObject();
 		jsonPostRepCount.put("RepCount", 0);
 
-		CoapClient client1 = new CoapClient("coap://localhost:5693/setRepCount");
+		CoapClient client1 = new CoapClient("coap://localhost:5688/setRepCount");
 		CoapResponse response1 = client1.post(jsonPostRepCount.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response1 != null) {
 			System.out.println(response1.getCode());
@@ -409,7 +409,7 @@ public class Controller {
 		JSONObject jsonPostHeartRate2 = new JSONObject();
 		jsonPostHeartRate2.put("HeartRate2", 100);
 
-		CoapClient client3 = new CoapClient("coap://localhost:5692/setHeartRate2");
+		CoapClient client3 = new CoapClient("coap://localhost:5696/setHeartRate2");
 		CoapResponse response3 = client3.post(jsonPostHeartRate2.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response3 != null) {
 			System.out.println(response3.getCode());
@@ -424,7 +424,7 @@ public class Controller {
 		JSONObject jsonPostCalories = new JSONObject();
 		jsonPostCalories.put("CaloriesCount", 0);
 
-		CoapClient client4 = new CoapClient("coap://localhost:5685/setCaloriesCount");
+		CoapClient client4 = new CoapClient("coap://localhost:5689/setCaloriesCount");
 		CoapResponse response4 = client4.post(jsonPostCalories.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response4 != null) {
 			System.out.println(response4.getCode());
@@ -439,7 +439,7 @@ public class Controller {
 		JSONObject jsonPostCalories2 = new JSONObject();
 		jsonPostCalories2.put("CaloriesCount2", 0);
 
-		CoapClient client5 = new CoapClient("coap://localhost:5688/setCaloriesCount2");
+		CoapClient client5 = new CoapClient("coap://localhost:5695/setCaloriesCount2");
 		CoapResponse response5 = client5.post(jsonPostCalories2.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
 			System.out.println(response5.getCode());

@@ -20,7 +20,7 @@ public class RepCountSensor {
 
 	public RepCountSensor() {
 
-		CoapServer server = new CoapServer(5683);
+		CoapServer server = new CoapServer(5685);
 
 		server.add(new GetRepCount());
 

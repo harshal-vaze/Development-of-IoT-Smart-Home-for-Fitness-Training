@@ -20,7 +20,7 @@ public class HeartRateSensor2 {
 
 	public HeartRateSensor2() {
 
-		CoapServer server = new CoapServer(5691);
+		CoapServer server = new CoapServer(5693);
 
 		server.add(new GetHeartRate2());
 

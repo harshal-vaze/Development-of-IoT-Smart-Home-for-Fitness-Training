@@ -18,7 +18,7 @@ public class RepCountActuator {
 
 	public RepCountActuator() {
 
-		CoapServer server = new CoapServer(5693);
+		CoapServer server = new CoapServer(5688);
 
 		server.add(new SetRepCount());
 

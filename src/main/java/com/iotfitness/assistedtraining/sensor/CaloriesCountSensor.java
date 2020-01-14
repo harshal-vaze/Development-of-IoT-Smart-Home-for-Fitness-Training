@@ -20,7 +20,7 @@ public class CaloriesCountSensor {
 
 	public CaloriesCountSensor() {
 
-		CoapServer server = new CoapServer(5684);
+		CoapServer server = new CoapServer(5686);
 
 		server.add(new GetCaloriesCount());
 

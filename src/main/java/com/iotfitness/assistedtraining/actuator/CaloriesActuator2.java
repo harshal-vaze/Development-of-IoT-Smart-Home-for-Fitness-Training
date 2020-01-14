@@ -18,7 +18,7 @@ public class CaloriesActuator2 {
 
 	public CaloriesActuator2() {
 
-		CoapServer server = new CoapServer(5688);
+		CoapServer server = new CoapServer(5695);
 
 		server.add(new SetCaloriesCount2());
 

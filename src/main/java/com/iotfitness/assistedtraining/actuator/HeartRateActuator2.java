@@ -18,7 +18,7 @@ public class HeartRateActuator2 {
 
 	public HeartRateActuator2() {
 
-		CoapServer server = new CoapServer(5692);
+		CoapServer server = new CoapServer(5696);
 
 		server.add(new SetHeartRate2());
 

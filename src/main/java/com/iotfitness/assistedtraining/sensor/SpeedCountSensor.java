@@ -20,7 +20,7 @@ public class SpeedCountSensor {
 
 	public SpeedCountSensor() {
 
-		CoapServer server = new CoapServer(5686);
+		CoapServer server = new CoapServer(5691);
 
 		server.add(new GetSpeedCount());
 
