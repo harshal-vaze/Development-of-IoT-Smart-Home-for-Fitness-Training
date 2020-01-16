@@ -37,7 +37,7 @@ public class CaloriesActuator2 {
 		@Override
 		public void handlePOST(CoapExchange exchange) {
 
-			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"POST_REQUEST_SUCCESS\"}",
+			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"CALORIES COUNT POST REQUEST SUCCESSS\"}",
 					MediaTypeRegistry.APPLICATION_JSON);
 
 			JSONObject json = new JSONObject(exchange.getRequestText());

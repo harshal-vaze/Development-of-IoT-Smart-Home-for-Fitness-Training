@@ -76,7 +76,7 @@
 							style="height: 475px">
 							<h3 class="p text-muted text-center font-weight-normal"
 								style="height: 25px">
-								<u>BENCH PRESS</u>
+								<u>WEIGHT TRAINING</u>
 							</h3>
 							<h4 class="p text-info text-center">REPETITIONS COUNT</h4>
 							<div class="row" style="height: 40px">
@@ -160,12 +160,12 @@
 			});
 		}
 
-		function setRepCount() {
+		function setRepCounts() {
 			var addData = "<RepCount>1</RepCount>";
 			$(document).ready(function() {
 				$.ajax({
 					type : "POST",
-					url : "http://localhost:8080/setRepCount",
+					url : "http://localhost:8080/setRepCounts",
 					contentType : "application/xml",
 					dataType : "xml",
 					data : addData,
@@ -183,9 +183,9 @@
 			$("#im1").attr("src", "./Image/Rep1.gif");
 			$("#im3").attr("src", "./Image/heart.gif");
 			$(document).ready(function() {
-				interval = setInterval(viewRepCounts, 1800);
-				setRepCount();
-				interval3 = setInterval(setRepCount, 1800);
+				interval1 = setInterval(viewRepCounts, 1800);
+				setRepCounts();
+				interval2 = setInterval(setRepCounts, 1800);
 			});
 		}
 
@@ -193,12 +193,12 @@
 			$("#im1").attr("src", "./Image/Rep2.png");
 			$("#im3").attr("src", "./Image/heart.png");
 			$(document).ready(function() {
-				clearInterval(interval);
+				clearInterval(interval1);
 				var addData = "<RepCount>0</RepCount>";
 				$(document).ready(function() {
 					$.ajax({
 						type : "POST",
-						url : "http://localhost:8080/setRepCount",
+						url : "http://localhost:8080/setRepCounts",
 						contentType : "application/xml",
 						dataType : "xml",
 						data : addData,
@@ -210,13 +210,12 @@
 						}
 					});
 				});
-				clearInterval(interval3);
+				clearInterval(interval2);
 			});
 		}
 
 		function viewCyclingCounts() {
-			$(document).ready(
-					function() {
+			$(document).ready(function() {
 						$.ajax({
 							type : "GET",
 							url : "http://localhost:8080/getCyclingCounts",
@@ -224,13 +223,9 @@
 							dataType : "xml",
 							success : function(xmlData) {
 								console.log(xmlData);
-								$("#p3").text(
-										$(xmlData).find("SpeedCount").text());
-								$("#p2").text(
-										$(xmlData).find("CaloriesCount2")
-												.text());
-								$("#p4").text(
-										$(xmlData).find("HeartRate2").text());
+								$("#p3").text($(xmlData).find("SpeedCount").text());
+								$("#p2").text($(xmlData).find("CaloriesCount2").text());
+								$("#p4").text($(xmlData).find("HeartRate2").text());
 							},
 							error : function(xhr) {
 								alert(xhr.responseText);
@@ -239,12 +234,12 @@
 					});
 		}
 
-		function setSpeedCount() {
+		function setCyclingCounts() {
 			var addData = "<SpeedCount>1</SpeedCount>";
 			$(document).ready(function() {
 				$.ajax({
 					type : "POST",
-					url : "http://localhost:8080/setSpeedCount",
+					url : "http://localhost:8080/setCyclingCounts",
 					contentType : "application/xml",
 					dataType : "xml",
 					data : addData,
@@ -262,9 +257,9 @@
 			$("#im2").attr("src", "./Image/Cycle1.gif");
 			$("#im3").attr("src", "./Image/heart.gif");
 			$(document).ready(function() {
-				interval2 = setInterval(viewCyclingCounts, 1000);
-				setSpeedCount();
-				interval4 = setInterval(setSpeedCount, 1000);
+				interval3 = setInterval(viewCyclingCounts, 1000);
+				setCyclingCounts();
+				interval4 = setInterval(setCyclingCounts, 1000);
 			});
 		}
 
@@ -272,12 +267,12 @@
 			$("#im2").attr("src", "./Image/Cycle2.png");
 			$("#im3").attr("src", "./Image/heart.png");
 			$(document).ready(function() {
-				clearInterval(interval2);
+				clearInterval(interval3);
 				var addData = "<SpeedCount>0</SpeedCount>";
 				$(document).ready(function() {
 					$.ajax({
 						type : "POST",
-						url : "http://localhost:8080/setSpeedCount",
+						url : "http://localhost:8080/setCyclingCounts",
 						contentType : "application/xml",
 						dataType : "xml",
 						data : addData,
@@ -298,7 +293,7 @@
 			$(document).ready(function() {
 				$.ajax({
 					type : "POST",
-					url : "http://localhost:8080/setAllClear",
+					url : "http://localhost:8080/setNextExercise",
 					contentType : "application/xml",
 					dataType : "xml",
 					data : addData,

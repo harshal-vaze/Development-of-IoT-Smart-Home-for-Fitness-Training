@@ -36,7 +36,7 @@ public class RepCountActuator {
 		@Override
 		public void handlePOST(CoapExchange exchange) {
 
-			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"POST_REQUEST_SUCCESS\"}",
+			exchange.respond(ResponseCode.CONTENT, "{\"message\":\"REP COUNT POST REQUEST SUCCESS\"}",
 					MediaTypeRegistry.APPLICATION_JSON);
 
 			JSONObject json = new JSONObject(exchange.getRequestText());

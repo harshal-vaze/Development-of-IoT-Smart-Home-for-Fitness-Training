@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class IoTGateway {
 
 	@RequestMapping(value = "/getRepCounts", produces = "application/xml")
 	public String getRepCounts() {
@@ -63,7 +63,7 @@ public class Controller {
 			System.out.println("Request failed");
 		}
 
-		xml = "<Counts>" + XML.toString(json) + "</Counts>";
+		xml = "<WeightTrainingCounts>" + XML.toString(json) + "</WeightTrainingCounts>";
 		System.out.println(xml);
 
 		return xml;
@@ -126,8 +126,8 @@ public class Controller {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/setRepCount", consumes = "application/xml")
-	public void setRepCount(@RequestBody String xml) {
+	@RequestMapping(method = RequestMethod.POST, value = "/setRepCounts", consumes = "application/xml")
+	public void setRepCounts(@RequestBody String xml) {
 
 		JSONObject json = new JSONObject();
 
@@ -248,8 +248,8 @@ public class Controller {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/setSpeedCount", consumes = "application/xml")
-	public void setSpeedCount(@RequestBody String xml) {
+	@RequestMapping(method = RequestMethod.POST, value = "/setCyclingCounts", consumes = "application/xml")
+	public void setCyclingCounts(@RequestBody String xml) {
 
 		JSONObject json = new JSONObject();
 
@@ -373,8 +373,8 @@ public class Controller {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/setAllClear", consumes = "application/xml")
-	public void setAllCLear(@RequestBody String xml) {
+	@RequestMapping(method = RequestMethod.POST, value = "/setNextExercise", consumes = "application/xml")
+	public void setNextExercise(@RequestBody String xml) {
 
 		JSONObject jsonPostRepCount = new JSONObject();
 		jsonPostRepCount.put("RepCount", 0);
