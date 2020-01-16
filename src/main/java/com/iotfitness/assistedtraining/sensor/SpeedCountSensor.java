@@ -15,8 +15,16 @@ import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.springframework.stereotype.Component;
 
+/* This class generates the Speed Count Sensor 
+	and implements CoAP Server. */
+
 @Component
 public class SpeedCountSensor {
+
+	/*
+	 * This constructor initiates CoAP Server with assigned Port and adds CoAP
+	 * Resource to it.
+	 */
 
 	public SpeedCountSensor() {
 
@@ -28,7 +36,14 @@ public class SpeedCountSensor {
 
 	}
 
+	/*
+	 * This class extends the CoAP Resource and handles the CoAP Resource methods.
+	 */
+
 	public static class GetSpeedCount extends CoapResource {
+
+		// This constructor adds new CoAP Resource.
+
 		public GetSpeedCount() {
 
 			super("getSpeedCount");

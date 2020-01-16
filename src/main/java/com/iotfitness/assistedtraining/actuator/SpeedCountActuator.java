@@ -13,8 +13,16 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+/* This class generates the Speed Count Actuator 
+	and implements CoAP Server. */
+
 @Component
 public class SpeedCountActuator {
+
+	/*
+	 * This constructor initiates CoAP Server with assigned Port and adds CoAP
+	 * Resource to it.
+	 */
 
 	public SpeedCountActuator() {
 
@@ -26,7 +34,14 @@ public class SpeedCountActuator {
 
 	}
 
+	/*
+	 * This class extends the CoAP Resource and handles the CoAP Resource methods.
+	 */
+
 	public static class SetSpeedCount extends CoapResource {
+
+		// This constructor adds new CoAP Resource.
+
 		public SetSpeedCount() {
 
 			super("setSpeedCount");

@@ -15,8 +15,16 @@ import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.springframework.stereotype.Component;
 
+/* This class generates the Calories Count Sensor 
+	and implements CoAP Server. */
+
 @Component
 public class CaloriesCountSensor2 {
+
+	/*
+	 * This constructor initiates CoAP Server with assigned Port and adds CoAP
+	 * Resource to it.
+	 */
 
 	public CaloriesCountSensor2() {
 
@@ -28,7 +36,14 @@ public class CaloriesCountSensor2 {
 
 	}
 
+	/*
+	 * This class extends the CoAP Resource and handles the CoAP Resource methods.
+	 */
+
 	public static class GetCaloriesCount2 extends CoapResource {
+
+		// This constructor adds new CoAP Resource.
+
 		public GetCaloriesCount2() {
 
 			super("getCaloriesCount2");

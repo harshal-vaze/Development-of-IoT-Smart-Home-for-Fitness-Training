@@ -10,14 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/* This class generates the IoT Gateway 
+	and handles the methods. */
+
 @RestController
 public class IoTGateway {
+
+	/*
+	 * This method handles requests for Weight Training use-case and returns the
+	 * value in XML.
+	 */
 
 	@RequestMapping(value = "/getRepCounts", produces = "application/xml")
 	public String getRepCounts() {
 
 		String xml = "";
 		JSONObject json = new JSONObject();
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client1 = new CoapClient("coap://localhost:5685/getRepCount");
 		CoapResponse response1 = client1.get();
@@ -32,6 +42,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client2 = new CoapClient("coap://localhost:5686/getCaloriesCount");
 		CoapResponse response2 = client2.get();
@@ -48,6 +60,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// CoAP Client creation and obtaining its response.
+
 		CoapClient client3 = new CoapClient("coap://localhost:5687/getHeartRate");
 		CoapResponse response3 = client3.get();
 
@@ -63,6 +77,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// JSON to XML encoding scheme conversion
+
 		xml = "<WeightTrainingCounts>" + XML.toString(json) + "</WeightTrainingCounts>";
 		System.out.println(xml);
 
@@ -70,11 +86,18 @@ public class IoTGateway {
 
 	}
 
+	/*
+	 * This method handles requests for Cycling use-case and returns the value in
+	 * XML.
+	 */
+
 	@RequestMapping(value = "/getCyclingCounts", produces = "application/xml")
 	public String getCyclingCounts() {
 
 		String xml = "";
 		JSONObject json = new JSONObject();
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client1 = new CoapClient("coap://localhost:5691/getSpeedCount");
 		CoapResponse response1 = client1.get();
@@ -89,6 +112,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client2 = new CoapClient("coap://localhost:5692/getCaloriesCount2");
 		CoapResponse response2 = client2.get();
@@ -105,6 +130,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// CoAP Client creation and obtaining its response.
+
 		CoapClient client3 = new CoapClient("coap://localhost:5693/getHeartRate2");
 		CoapResponse response3 = client3.get();
 
@@ -119,6 +146,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// JSON to XML encoding scheme conversion
+
 		xml = "<CyclingCounts>" + XML.toString(json) + "</CyclingCounts>";
 		System.out.println(xml);
 
@@ -126,10 +155,17 @@ public class IoTGateway {
 
 	}
 
+	/*
+	 * This method handles requests for Weight Training use-case and posts the
+	 * appropriate value on Actuators in JSON.
+	 */
+
 	@RequestMapping(method = RequestMethod.POST, value = "/setRepCounts", consumes = "application/xml")
 	public void setRepCounts(@RequestBody String xml) {
 
 		JSONObject json = new JSONObject();
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client1 = new CoapClient("coap://localhost:5685/getRepCount");
 		CoapResponse response1 = client1.get();
@@ -145,6 +181,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// CoAP Client creation and obtaining its response.
+
 		CoapClient client2 = new CoapClient("coap://localhost:5687/getHeartRate");
 		CoapResponse response2 = client2.get();
 
@@ -159,6 +197,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client3 = new CoapClient("coap://localhost:5686/getCaloriesCount");
 		CoapResponse response3 = client3.get();
@@ -188,6 +228,8 @@ public class IoTGateway {
 		JSONObject postHeartData = new JSONObject();
 		postHeartData.put("HeartRate", newHeartRate);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client4 = new CoapClient("coap://localhost:5690/setHeartRate");
 		CoapResponse response4 = client4.post(postHeartData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response4 != null) {
@@ -211,6 +253,8 @@ public class IoTGateway {
 		JSONObject postCaloriesData = new JSONObject();
 		postCaloriesData.put("CaloriesCount", newCaloriesCount);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client5 = new CoapClient("coap://localhost:5689/setCaloriesCount");
 		CoapResponse response5 = client5.post(postCaloriesData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
@@ -222,6 +266,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and sending its response.
 
 		CoapClient client6 = new CoapClient("coap://localhost:5688/setRepCount");
 
@@ -248,10 +294,17 @@ public class IoTGateway {
 
 	}
 
+	/*
+	 * This method handles requests for Cycling use-case and posts the appropriate
+	 * value on Actuators in JSON.
+	 */
+
 	@RequestMapping(method = RequestMethod.POST, value = "/setCyclingCounts", consumes = "application/xml")
 	public void setCyclingCounts(@RequestBody String xml) {
 
 		JSONObject json = new JSONObject();
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client1 = new CoapClient("coap://localhost:5691/getSpeedCount");
 		CoapResponse response1 = client1.get();
@@ -267,6 +320,8 @@ public class IoTGateway {
 			System.out.println("Request failed");
 		}
 
+		// CoAP Client creation and obtaining its response.
+
 		CoapClient client2 = new CoapClient("coap://localhost:5692/getCaloriesCount2");
 		CoapResponse response2 = client2.get();
 
@@ -281,6 +336,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and obtaining its response.
 
 		CoapClient client3 = new CoapClient("coap://localhost:5693/getHeartRate2");
 		CoapResponse response3 = client3.get();
@@ -311,6 +368,8 @@ public class IoTGateway {
 		JSONObject postHeartData = new JSONObject();
 		postHeartData.put("HeartRate2", newHeartRate);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client4 = new CoapClient("coap://localhost:5696/setHeartRate2");
 		CoapResponse response4 = client4.post(postHeartData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response4 != null) {
@@ -336,6 +395,8 @@ public class IoTGateway {
 		JSONObject postCaloriesData = new JSONObject();
 		postCaloriesData.put("CaloriesCount2", newCaloriesCount);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client5 = new CoapClient("coap://localhost:5695/setCaloriesCount2");
 		CoapResponse response5 = client5.post(postCaloriesData.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
@@ -347,6 +408,8 @@ public class IoTGateway {
 		else {
 			System.out.println("Request failed");
 		}
+
+		// CoAP Client creation and sending its response.
 
 		CoapClient client6 = new CoapClient("coap://localhost:5694/setSpeedCount");
 
@@ -373,11 +436,18 @@ public class IoTGateway {
 
 	}
 
+	/*
+	 * This method handles requests from both the use-cases and posts the
+	 * appropriate value on Actuators in JSON.
+	 */
+
 	@RequestMapping(method = RequestMethod.POST, value = "/setNextExercise", consumes = "application/xml")
 	public void setNextExercise(@RequestBody String xml) {
 
 		JSONObject jsonPostRepCount = new JSONObject();
 		jsonPostRepCount.put("RepCount", 0);
+
+		// CoAP Client creation and sending its response.
 
 		CoapClient client1 = new CoapClient("coap://localhost:5688/setRepCount");
 		CoapResponse response1 = client1.post(jsonPostRepCount.toString(), MediaTypeRegistry.APPLICATION_JSON);
@@ -394,6 +464,8 @@ public class IoTGateway {
 		JSONObject jsonPostHeartRate = new JSONObject();
 		jsonPostHeartRate.put("HeartRate", 100);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client2 = new CoapClient("coap://localhost:5690/setHeartRate");
 		CoapResponse response2 = client2.post(jsonPostHeartRate.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response2 != null) {
@@ -408,6 +480,8 @@ public class IoTGateway {
 
 		JSONObject jsonPostHeartRate2 = new JSONObject();
 		jsonPostHeartRate2.put("HeartRate2", 100);
+
+		// CoAP Client creation and sending its response.
 
 		CoapClient client3 = new CoapClient("coap://localhost:5696/setHeartRate2");
 		CoapResponse response3 = client3.post(jsonPostHeartRate2.toString(), MediaTypeRegistry.APPLICATION_JSON);
@@ -424,6 +498,8 @@ public class IoTGateway {
 		JSONObject jsonPostCalories = new JSONObject();
 		jsonPostCalories.put("CaloriesCount", 0);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client4 = new CoapClient("coap://localhost:5689/setCaloriesCount");
 		CoapResponse response4 = client4.post(jsonPostCalories.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response4 != null) {
@@ -439,6 +515,8 @@ public class IoTGateway {
 		JSONObject jsonPostCalories2 = new JSONObject();
 		jsonPostCalories2.put("CaloriesCount2", 0);
 
+		// CoAP Client creation and sending its response.
+
 		CoapClient client5 = new CoapClient("coap://localhost:5695/setCaloriesCount2");
 		CoapResponse response5 = client5.post(jsonPostCalories2.toString(), MediaTypeRegistry.APPLICATION_JSON);
 		if (response5 != null) {
@@ -453,6 +531,8 @@ public class IoTGateway {
 
 		JSONObject jsonPostSpeedCount = new JSONObject();
 		jsonPostSpeedCount.put("SpeedCount", 0);
+
+		// CoAP Client creation and sending its response.
 
 		CoapClient client6 = new CoapClient("coap://localhost:5694/setSpeedCount");
 		CoapResponse response6 = client6.post(jsonPostSpeedCount.toString(), MediaTypeRegistry.APPLICATION_JSON);

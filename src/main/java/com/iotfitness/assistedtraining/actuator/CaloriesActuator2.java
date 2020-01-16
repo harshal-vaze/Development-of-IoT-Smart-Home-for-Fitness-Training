@@ -13,8 +13,16 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+/* This class generates the Calories Count Actuator 
+	and implements CoAP Server. */
+
 @Component
 public class CaloriesActuator2 {
+
+	/*
+	 * This constructor initiates CoAP Server with assigned Port and adds CoAP
+	 * Resource to it.
+	 */
 
 	public CaloriesActuator2() {
 
@@ -26,7 +34,14 @@ public class CaloriesActuator2 {
 
 	}
 
+	/*
+	 * This class extends the CoAP Resource and handles the CoAP Resource methods.
+	 */
+
 	public static class SetCaloriesCount2 extends CoapResource {
+
+		// This constructor adds new CoAP Resource.
+
 		public SetCaloriesCount2() {
 
 			super("setCaloriesCount2");

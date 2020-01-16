@@ -13,8 +13,16 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+/* This class generates the Heart Rate Actuator 
+	and implements CoAP Server. */
+
 @Component
 public class HeartRateActuator2 {
+
+	/*
+	 * This constructor initiates CoAP Server with assigned Port and adds CoAP
+	 * Resource to it.
+	 */
 
 	public HeartRateActuator2() {
 
@@ -26,7 +34,14 @@ public class HeartRateActuator2 {
 
 	}
 
+	/*
+	 * This class extends the CoAP Resource and handles the CoAP Resource methods.
+	 */
+
 	public static class SetHeartRate2 extends CoapResource {
+
+		// This constructor adds new CoAP Resource.
+
 		public SetHeartRate2() {
 
 			super("setHeartRate2");
