@@ -1,4 +1,4 @@
-![](IoT.PNG)
+![](IoT.png)
 
 *Project Description*
 
